@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop;
 import java.util.Random;
 import java.util.ArrayList;
 public class MazeCreator {
-    Random random = new Random();
+    private Random random = new Random();
     private int[][] maze = new int[11][11];
 
     public MazeCreator() {
@@ -43,10 +43,12 @@ public class MazeCreator {
             for(int column = 1;column < maze[0].length;column++){
                 clearWall(row,column);
             }
+            printMaze();
         }
 
 
     }
+
     private boolean checkWall(int row, int column){
         boolean wall = false;
         if(maze[row][column] == 2){
@@ -55,11 +57,16 @@ public class MazeCreator {
         return wall;
 
     }
+
+    public int[][] getMaze() {
+        return maze;
+    }
+
     private void clearWall(int row, int column){
         System.out.println();
         if (row<= maze.length && column <= maze[0].length && maze[row][column] == 0) {
             maze[row][column] = 9;
-            printMaze();
+
 
             ArrayList<ArrayList<Integer>> positionOfWall = new ArrayList<ArrayList<Integer>>();
             for (int i = 0; i < 4; i++) {
