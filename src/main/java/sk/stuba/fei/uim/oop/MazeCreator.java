@@ -9,7 +9,7 @@ public class MazeCreator {
     public MazeCreator() {
         createBorder();
 
-        createMaze(1,1);
+        createMaze();
 
     }
 
@@ -37,9 +37,14 @@ public class MazeCreator {
         }
 
     }
-    private void createMaze(int row, int column){
+    private void createMaze(){
 
-        clearWall(row,column);
+        for (int row = 1; row < maze.length;row++){
+            for(int column = 1;column < maze[0].length;column++){
+                clearWall(row,column);
+            }
+        }
+
 
     }
     private boolean checkWall(int row, int column){
