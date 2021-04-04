@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.ArrayList;
 public class MazeCreator {
     private Random random = new Random();
-    private int[][] maze = new int[30][30];
+    private int[][] maze = new int[60][60];
 
     public MazeCreator() {
         createBorder();
@@ -39,9 +39,13 @@ public class MazeCreator {
     }
     private void createMaze(){
 
+
         for (int row = 1; row < maze.length;row++){
             for(int column = 1;column < maze[0].length;column++){
-                clearWall(row,column);
+                if(row == 1 && column ==1)
+                    clearWall(row,column);
+                else
+                    breakWall(row,column);
             }
             printMaze();
         }
@@ -49,33 +53,44 @@ public class MazeCreator {
 
     }
 
-    private boolean checkWall(int row, int column){
+    private boolean checkWall(int row, int column,int mode){
         boolean wall = false;
-        if(maze[row][column] == 2){
-            wall = true;
+        if(mode == 1) {
+            if (maze[row][column] == 2) {
+                wall = true;
+            }
+        }
+        else{
+            if (maze[row][column] == 1) {
+                wall = true;
+            }
         }
         return wall;
 
     }
-
+    private ArrayList<ArrayList<Integer>> evaluateTile(int row, int column,int mode){
+        ArrayList<ArrayList<Integer>> positionOfWall = create2dArraylist();
+        for (int rowOfArray = 0; rowOfArray < positionOfWall.size(); rowOfArray++) {
+            if (!checkWall(row + positionOfWall.get(rowOfArray).get(0), column + positionOfWall.get(rowOfArray).get(1),mode)) {
+                positionOfWall.remove(rowOfArray);
+                rowOfArray--;
+            }
+        }
+        return positionOfWall;
+    }
     public int[][] getMaze() {
         return maze;
     }
 
     private void clearWall(int row, int column){
         System.out.println();
+        int mode = 1; //hladaj este npouzite steny , ine cislo by boli steny ktore su uz ulozene
         if (row<= maze.length && column <= maze[0].length && maze[row][column] == 0) {
-            maze[row][column] = 9;
+            maze[row][column] = 9; // visited
+            ArrayList<ArrayList<Integer>> positionOfWall;
 
+            positionOfWall= evaluateTile(row,column,mode);
 
-            ArrayList<ArrayList<Integer>> positionOfWall = create2dArraylist();
-
-            for (int rowOfArray = 0; rowOfArray < positionOfWall.size(); rowOfArray++) {
-                if (!checkWall(row + positionOfWall.get(rowOfArray).get(0), column + positionOfWall.get(rowOfArray).get(1))) {
-                    positionOfWall.remove(rowOfArray);
-                    rowOfArray--;
-                }
-            }
             if (positionOfWall.size()>0) {
                 int randomWall = random.nextInt(positionOfWall.size());
                 for (int i = 0; i < positionOfWall.size(); i++) {
@@ -96,13 +111,14 @@ public class MazeCreator {
 
     }
     private void breakWall(int row,int column){
-        ArrayList<ArrayList<Integer>> positionOfWall = create2dArraylist();
+        if (row<= maze.length && column <= maze[0].length && maze[row][column] == 0) {
+            int mode = 0; // searching for walls that were already created
+            ArrayList<ArrayList<Integer>> positionOfWall;
 
-        for (int rowOfArray = 0; rowOfArray < positionOfWall.size(); rowOfArray++) {
-            if (!checkWall(row + positionOfWall.get(rowOfArray).get(0), column + positionOfWall.get(rowOfArray).get(1))) {
-                positionOfWall.remove(rowOfArray);
-                rowOfArray--;
-            }
+            positionOfWall= evaluateTile(row,column,mode);
+            int randomWall = random.nextInt(positionOfWall.size());
+            maze[row + positionOfWall.get(randomWall).get(0)][column + positionOfWall.get(randomWall).get(1)] = 5;
+            clearWall(row,column);
         }
     }
     private ArrayList<ArrayList<Integer>> create2dArraylist(){

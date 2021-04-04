@@ -17,6 +17,6 @@ public class MyFrame extends JFrame {
         frame.add(panel);
         frame.add(new MyCanvas());
         frame.setVisible(true);
-        frame.setSize(600,600);
+        frame.setSize(700,700);
     }
 }

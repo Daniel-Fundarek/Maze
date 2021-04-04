@@ -71,5 +71,12 @@ public class MyCanvas extends Canvas {
             }
 
         }
+        g.setColor(Color.BLACK);
+        Graphics2D g2 = (Graphics2D)g;
+        Stroke oldStroke = g2.getStroke();
+        g2.setStroke(new BasicStroke(2));
+        g2.drawRect(10,10,11* (maze[0].length-2),11* (maze.length-2));
+        g2.setStroke(oldStroke);
+
     }
 }
