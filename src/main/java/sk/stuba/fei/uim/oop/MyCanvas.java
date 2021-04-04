@@ -62,6 +62,7 @@ public class MyCanvas extends Canvas {
                 }
                 else if(row%2 == 1 && column%2 ==0){
                     // nakresli vertikalne  ciary
+
                     drawVerticalLines(row,column,g);
                     System.out.println("Vertikalne:row: "+ row + "column: " +column);
                 }
