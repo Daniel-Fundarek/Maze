@@ -20,7 +20,6 @@ public class MyCanvas extends Canvas {
 
     }
     private void drawVerticalLines(int row,int column, Graphics g){
-
         g.fillRect(11*column+9,11*row,2,20);
 
     }

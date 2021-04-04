@@ -4,11 +4,10 @@ import java.util.Random;
 import java.util.ArrayList;
 public class MazeCreator {
     private Random random = new Random();
-    private int[][] maze = new int[60][60];
+    private int[][] maze = new int[12][12];  // only even num
 
     public MazeCreator() {
         createBorder();
-
         createMaze();
 
     }
@@ -46,6 +45,7 @@ public class MazeCreator {
                     clearWall(row,column);
                 else
                     breakWall(row,column);
+
             }
             printMaze();
         }
