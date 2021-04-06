@@ -65,6 +65,9 @@ public class MazeCreator {
                 else{
                     maze[row][column] = 0;
                 }
+                if (row == maze.length-3 && column == maze[0].length-3){        // pridanie konca
+                    maze[row][column] = 9;
+                }
             }
         }
     }

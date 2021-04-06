@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class MyCanvas extends Canvas {
     MazeCreator creator = new MazeCreator();
+    int playerPositionX = 5;
+    int playerPositionY = 7;
     private int[][] maze;
     public MyCanvas() {
 
@@ -39,32 +41,14 @@ public class MyCanvas extends Canvas {
                 if (maze[row][column] ==1 || maze[row][column] == 2){
                     g.setColor(Color.BLACK);
                 }
-
+                else if (maze[row][column] == 9){
+                    g.setColor(Color.BLUE);
+                }
                 else{
                     g.setColor(Color.WHITE);
                 }
-                if(row%2 == 0 && column%2 ==0){
-                    // nakresli male bodky iba
-                    drawDots(row,column,g);
-                    System.out.println("BODDKY:row: "+ row + "column: " +column);
 
-                }
-                else if(row%2 == 1 && column%2 ==1){
-                  // nakresli stvorce
-                    drawRectangles(row,column,g);
-                    System.out.println("Stvreoce:row: "+ row + "column: " +column);
-                }
-                else if(row%2 == 0 && column%2 ==1){
-                    // nakresli horizontalne ciary
-                    drawHorizontalLines(row,column,g);
-                    System.out.println("Hozrizontalne:row: "+ row + "column: " +column);
-                }
-                else if(row%2 == 1 && column%2 ==0){
-                    // nakresli vertikalne  ciary
-
-                    drawVerticalLines(row,column,g);
-                    System.out.println("Vertikalne:row: "+ row + "column: " +column);
-                }
+               drawBoard(row,column,g);
 
 
             }
@@ -76,6 +60,11 @@ public class MyCanvas extends Canvas {
         g2.setStroke(new BasicStroke(2));
         g2.drawRect(10,10,11* (maze[0].length-2),11* (maze.length-2));
         g2.setStroke(oldStroke);
+
+        markViableTiles(playerPositionY,playerPositionX,1,0,g);
+        markViableTiles(playerPositionY,playerPositionX,-1,0,g);
+        markViableTiles(playerPositionY,playerPositionX,0,1,g);
+        markViableTiles(playerPositionY,playerPositionX,0,-1,g);
 
     }
     private void drawBoard(int row, int column  ,Graphics g){
@@ -103,10 +92,11 @@ public class MyCanvas extends Canvas {
         }
     }
 
-    private void markViableTiles(int row, int column, int directionX ,int  directionY){
+    private void markViableTiles(int row, int column, int directionX ,int  directionY, Graphics g){
         if (maze[row + directionY][column+directionX] == 0){
-
-            markViableTiles(column+directionX,row+directionY, directionX, directionY);
+            g.setColor(Color.CYAN);
+            drawBoard(row + directionY,column+directionX, g);
+            markViableTiles(row+directionY ,column+directionX, directionX, directionY,g);
         }
         else{
 
