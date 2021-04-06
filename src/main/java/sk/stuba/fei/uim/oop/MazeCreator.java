@@ -4,12 +4,15 @@ import java.util.Random;
 import java.util.ArrayList;
 public class MazeCreator {
     private Random random = new Random();
-    private int[][] maze = new int[12][12];  // only even num
+    private int[][] maze = new int[30][30];  // only even num
 
     public MazeCreator() {
         createBorder();
-        createMaze();
+       // printMaze();
 
+        createMaze();
+        simplifyMaze();
+        printMaze();
     }
 
     private void createBorder(){
@@ -28,6 +31,7 @@ public class MazeCreator {
         }
     }
     private void printMaze(){
+        System.out.println();
         for (int row =0;row< maze.length; row++){
             for (int column =0;column< maze[0].length; column++) {
                 System.out.print(" " + maze[row][column]);
@@ -36,6 +40,7 @@ public class MazeCreator {
         }
 
     }
+
     private void createMaze(){
 
 
@@ -44,13 +49,24 @@ public class MazeCreator {
                 if(row == 1 && column ==1)
                     clearWall(row,column);
                 else
-                    breakWall(row,column);
-
+                   breakWall(row,column);
             }
             printMaze();
         }
 
 
+    }
+    private void simplifyMaze(){
+        for (int row = 0; row < maze.length;row++){
+            for(int column = 0  ;column < maze[0].length;column++){
+                if(maze[row][column] == 3 || maze[row][column] == 1 || maze[row][column] == 2) {
+                    maze[row][column] = 1;
+                }
+                else{
+                    maze[row][column] = 0;
+                }
+            }
+        }
     }
 
     private boolean checkWall(int row, int column,int mode){
@@ -84,7 +100,7 @@ public class MazeCreator {
 
     private void clearWall(int row, int column){
         System.out.println();
-        int mode = 1; //hladaj este npouzite steny , ine cislo by boli steny ktore su uz ulozene
+        int mode = 1; //hladaj este nepouzite steny , ine cislo by boli steny ktore su uz ulozene
         if (row<= maze.length && column <= maze[0].length && maze[row][column] == 0) {
             maze[row][column] = 9; // visited
             ArrayList<ArrayList<Integer>> positionOfWall;

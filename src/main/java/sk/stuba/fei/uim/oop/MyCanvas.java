@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class MyCanvas extends Canvas {
     MazeCreator creator = new MazeCreator();
-    int[][] maze;
+    private int[][] maze;
     public MyCanvas() {
 
         maze =  creator.getMaze();
@@ -78,4 +78,40 @@ public class MyCanvas extends Canvas {
         g2.setStroke(oldStroke);
 
     }
+    private void drawBoard(int row, int column  ,Graphics g){
+        if(row%2 == 0 && column%2 ==0){
+            // nakresli male bodky iba
+            drawDots(row,column,g);
+            System.out.println("BODDKY:row: "+ row + "column: " +column);
+
+        }
+        else if(row%2 == 1 && column%2 ==1){
+            // nakresli stvorce
+            drawRectangles(row,column,g);
+            System.out.println("Stvreoce:row: "+ row + "column: " +column);
+        }
+        else if(row%2 == 0 && column%2 ==1){
+            // nakresli horizontalne ciary
+            drawHorizontalLines(row,column,g);
+            System.out.println("Hozrizontalne:row: "+ row + "column: " +column);
+        }
+        else if(row%2 == 1 && column%2 ==0){
+            // nakresli vertikalne  ciary
+
+            drawVerticalLines(row,column,g);
+            System.out.println("Vertikalne:row: "+ row + "column: " +column);
+        }
+    }
+
+    private void markViableTiles(int row, int column, int directionX ,int  directionY){
+        if (maze[row + directionY][column+directionX] == 0){
+
+            markViableTiles(column+directionX,row+directionY, directionX, directionY);
+        }
+        else{
+
+        }
+    }
+
+
 }
