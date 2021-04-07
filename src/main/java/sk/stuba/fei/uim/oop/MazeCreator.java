@@ -7,10 +7,7 @@ public class MazeCreator {
     private int[][] maze = new int[30][30];  // only even num
 
     public MazeCreator() {
-        createBorder();
-        createMaze();
-        simplifyMaze();
-        printMaze();
+        createNewMaze();
     }
 
     private void createBorder(){
@@ -95,9 +92,7 @@ public class MazeCreator {
         }
         return positionOfWall;
     }
-    public int[][] getMaze() {
-        return maze;
-    }
+
 
     private void clearWall(int row, int column){
         System.out.println();
@@ -164,6 +159,16 @@ public class MazeCreator {
             a[i] = maze[i].clone();
         }
         return a;
+    }
+    public void createNewMaze(){
+        createBorder();
+        createMaze();
+        simplifyMaze();
+        printMaze();
+
+    }
+    public int[][] getMaze() {
+        return maze;
     }
 
 

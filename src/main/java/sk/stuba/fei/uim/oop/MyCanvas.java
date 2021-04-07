@@ -3,13 +3,16 @@ package sk.stuba.fei.uim.oop;
 import java.awt.*;
 
 public class MyCanvas extends Canvas {
-    MazeCreator creator = new MazeCreator();
-    int playerPositionX = 5;
-    int playerPositionY = 7;
+    Manager manager;
     private int[][] maze;
-    public MyCanvas() {
+    public MyCanvas(Manager manager) {
+        this.manager = manager;
 
-        maze =  creator.cloneTwoDimArray();
+    }
+
+    @Override
+    public void repaint() {
+        super.repaint();
     }
 
     @Override
@@ -35,15 +38,19 @@ public class MyCanvas extends Canvas {
 
     }
     private void drawBoard(Graphics g){
-
+        maze = manager.getMaze();
         for (int row =0;row< maze.length-1; row++){
             for (int column =0;column< maze[0].length-1; column++) {
-                if (maze[row][column] ==1 || maze[row][column] == 2){
+                if (maze[row][column] ==1 ){
                     g.setColor(Color.BLACK);
+                }
+                else if(maze[row][column] == 2){
+                    g.setColor(Color.CYAN);
                 }
                 else if (maze[row][column] == 9){
                     g.setColor(Color.BLUE);
                 }
+
                 else{
                     g.setColor(Color.WHITE);
                 }
@@ -61,34 +68,31 @@ public class MyCanvas extends Canvas {
         g2.drawRect(10,10,11* (maze[0].length-2),11* (maze.length-2));
         g2.setStroke(oldStroke);
 
-        markViableTiles(playerPositionY,playerPositionX,1,0,g);
-        markViableTiles(playerPositionY,playerPositionX,-1,0,g);
-        markViableTiles(playerPositionY,playerPositionX,0,1,g);
-        markViableTiles(playerPositionY,playerPositionX,0,-1,g);
+
 
     }
     private void drawBoard(int row, int column  ,Graphics g){
         if(row%2 == 0 && column%2 ==0){
             // nakresli male bodky iba
             drawDots(row,column,g);
-            System.out.println("BODDKY:row: "+ row + "column: " +column);
+            //System.out.println("BODDKY:row: "+ row + "column: " +column);
 
         }
         else if(row%2 == 1 && column%2 ==1){
             // nakresli stvorce
             drawRectangles(row,column,g);
-            System.out.println("Stvreoce:row: "+ row + "column: " +column);
+            //System.out.println("Stvreoce:row: "+ row + "column: " +column);
         }
         else if(row%2 == 0 && column%2 ==1){
             // nakresli horizontalne ciary
             drawHorizontalLines(row,column,g);
-            System.out.println("Hozrizontalne:row: "+ row + "column: " +column);
+           // System.out.println("Hozrizontalne:row: "+ row + "column: " +column);
         }
         else if(row%2 == 1 && column%2 ==0){
             // nakresli vertikalne  ciary
 
             drawVerticalLines(row,column,g);
-            System.out.println("Vertikalne:row: "+ row + "column: " +column);
+           // System.out.println("Vertikalne:row: "+ row + "column: " +column);
         }
     }
 

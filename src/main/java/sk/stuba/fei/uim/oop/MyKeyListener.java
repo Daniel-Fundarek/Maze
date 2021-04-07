@@ -4,36 +4,41 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MyKeyListener implements KeyListener {
-    Player player;
+    Manager manager;
 
-    public MyKeyListener(Player player) {
-        this.player = player;
+    public MyKeyListener(Manager manager) {
+        this.manager = manager;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
-            player.setPositionY(player.getPositionY() - 2);
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            player.setPositionY(player.getPositionY() + 2);
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            player.setPositionX(player.getPositionX() - 2);
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            player.setPositionX(player.getPositionX() + 2);
-        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
 
+        if (key == KeyEvent.VK_LEFT) {
+            System.out.println("Lave");
+            manager.keyResponse(0 , -2);
+        }
+
+        if (key == KeyEvent.VK_RIGHT) {
+            System.out.println("prave");
+            manager.keyResponse(0 , 2);
+
+        }
+
+        if (key == KeyEvent.VK_UP) {
+            System.out.println("horne");
+            manager.keyResponse(-2 , 0);
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+            System.out.println("dolne");
+            manager.keyResponse(2 , 0);
+        }
     }
 
     @Override

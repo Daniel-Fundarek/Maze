@@ -1,9 +1,9 @@
 package sk.stuba.fei.uim.oop;
 
 public class Player {
-    int counter;
-    int positionX=1;
-    int positionY=1;
+    int counter = 0;
+    int positionX = 1;
+    int positionY = 1;
 
     public int getPositionX() {
         return positionX;
@@ -19,5 +19,13 @@ public class Player {
 
     public void setPositionY(int positionY) {
         this.positionY = positionY;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }
