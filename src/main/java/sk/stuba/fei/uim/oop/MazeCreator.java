@@ -8,8 +8,6 @@ public class MazeCreator {
 
     public MazeCreator() {
         createBorder();
-       // printMaze();
-
         createMaze();
         simplifyMaze();
         printMaze();
@@ -159,5 +157,14 @@ public class MazeCreator {
         positionOfWall.get(3).add(1, 1);
         return positionOfWall;
     }
+
+    public int[][] cloneTwoDimArray(){
+        int[][] a = new int[maze.length][];
+        for(int i = 0; i< maze.length; i++){
+            a[i] = maze[i].clone();
+        }
+        return a;
+    }
+
 
 }

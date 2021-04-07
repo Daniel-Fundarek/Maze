@@ -4,8 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame extends JFrame {
-    public MyFrame() throws HeadlessException {
+    Player player;
+    public MyFrame(Player player) throws HeadlessException {
     createCanvas();
+    this.player = player;
+
     }
 
     private void createCanvas() {
@@ -17,6 +20,7 @@ public class MyFrame extends JFrame {
         frame.add(panel);
         frame.add(new MyCanvas());
         frame.setVisible(true);
+        addKeyListener(new MyKeyListener(player) );
         frame.setSize(700,700);
     }
 }

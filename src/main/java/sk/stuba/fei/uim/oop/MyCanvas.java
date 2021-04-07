@@ -9,12 +9,12 @@ public class MyCanvas extends Canvas {
     private int[][] maze;
     public MyCanvas() {
 
-        maze =  creator.getMaze();
+        maze =  creator.cloneTwoDimArray();
     }
 
     @Override
     public void paint(Graphics g) {
-        idk(g);
+        drawBoard(g);
     }
     private void drawHorizontalLines(int row,int column, Graphics g){
 
@@ -34,7 +34,7 @@ public class MyCanvas extends Canvas {
         g.fillRect(11*column,11*row,20,20);
 
     }
-    private void idk(Graphics g){
+    private void drawBoard(Graphics g){
 
         for (int row =0;row< maze.length-1; row++){
             for (int column =0;column< maze[0].length-1; column++) {
