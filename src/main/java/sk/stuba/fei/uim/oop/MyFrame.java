@@ -17,9 +17,9 @@ public class MyFrame extends JFrame {
     }
 
     private void createFrame() {
-        JFrame frame = new JFrame("Frame");
+        JFrame frame = new JFrame("Maze");
         JPanel panel = new JPanel();
-        JLabel label = new JLabel("Maze");
+        JLabel label = new JLabel("Counter: ");
 
         frame.setLayout(new BorderLayout());
         panel.add(label);

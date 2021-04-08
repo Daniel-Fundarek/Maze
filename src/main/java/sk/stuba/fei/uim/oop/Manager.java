@@ -34,14 +34,9 @@ public class Manager {
                 // skontroluj ci niesom v cieli //
                 if (maze[player.getPositionY() ][player.getPositionX() ] == 9) {
 
-                    player.setPositionY(1);
-                    player.setPositionX(1);
+
                     player.setCounter(player.getCounter() + 1);
-                    label.setText("Counter: "+ player.getCounter());
-                    System.out.println("Presiel si bludisko"+ player.getCounter());
-                    mazeCreator.createNewMaze();
-                    maze = mazeCreator.cloneTwoDimArray();
-                    markAllViableTiles(player.getPositionY(), player.getPositionX());
+                    restart();
 
                 }
                 canvas.repaint();
@@ -70,6 +65,16 @@ public class Manager {
         }
     }
 
+    private void restart(){
+        player.setPositionY(1);
+        player.setPositionX(1);
+        label.setText("Counter: "+ player.getCounter());
+        System.out.println("Presiel si bludisko"+ player.getCounter());
+        mazeCreator.createNewMaze();
+        maze = mazeCreator.cloneTwoDimArray();
+        markAllViableTiles(player.getPositionY(), player.getPositionX());
+    }
+
     public void setCanvas(MyCanvas canvas) {
         this.canvas = canvas;
     }
@@ -81,4 +86,5 @@ public class Manager {
     public void setLabel(JLabel label) {
         this.label = label;
     }
+
 }
