@@ -17,9 +17,9 @@ public class MyCanvas extends Canvas {
 
     @Override
     public void paint(Graphics g) {
-        setColorAndDrawBoard(g);
+        changeColorAndDrawBoard(g);
     }
-    private void drawHorizontalLines(int row,int column, Graphics g){
+    protected void drawHorizontalLines(int row,int column, Graphics g){
 
         g.fillRect(11*column,11*row+9,20,2);
 
@@ -37,25 +37,12 @@ public class MyCanvas extends Canvas {
         g.fillRect(11*column,11*row,20,20);
 
     }
-    private void setColorAndDrawBoard(Graphics g){
+    private void changeColorAndDrawBoard(Graphics g){
         maze = manager.getMaze();
         for (int row =0;row< maze.length-1; row++){
             for (int column =0;column< maze[0].length-1; column++) {
-                if (maze[row][column] ==1 ){
-                    g.setColor(Color.BLACK);
-                }
-                else if(maze[row][column] == 2){
-                    g.setColor(Color.CYAN);
-                }
-                else if (maze[row][column] == 9){
-                    g.setColor(Color.BLUE);
-                }
-
-                else{
-                    g.setColor(Color.WHITE);
-                }
-
-               drawBoard(row,column,g);
+                changeColor(row,column,g);
+                drawBoard(row,column,g);
 
 
             }
@@ -70,6 +57,20 @@ public class MyCanvas extends Canvas {
 
 
 
+    }
+    private void changeColor(int row,int column,Graphics g){
+        if (maze[row][column] ==1 ){
+            g.setColor(Color.BLACK);
+        }
+        else if(maze[row][column] == 2){
+            g.setColor(Color.CYAN);
+        }
+        else if (maze[row][column] == 9){
+            g.setColor(Color.BLUE);
+        }
+        else{
+            g.setColor(Color.WHITE);
+        }
     }
     private void drawBoard(int row, int column  ,Graphics g){
         if(row%2 == 0 && column%2 ==0){
@@ -95,7 +96,6 @@ public class MyCanvas extends Canvas {
            // System.out.println("Vertikalne:row: "+ row + "column: " +column);
         }
     }
-
 
 
 
