@@ -10,8 +10,7 @@ public class MyFrame extends JFrame {
         this.manager = new Manager();
         this.canvas = new MyCanvas(manager);
         manager.setCanvas(this.canvas);
-
-    createFrame();
+        createFrame();
 
 
 
@@ -22,9 +21,12 @@ public class MyFrame extends JFrame {
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Maze");
 
+        frame.setLayout(new BorderLayout());
         panel.add(label);
-        frame.add(panel);
-        frame.add(canvas);
+        manager.setLabel(label);
+        frame.add("West",panel);
+        frame.add("Center",canvas);
+
         frame.setVisible(true);
         frame.addKeyListener(new MyKeyListener(manager) );
         frame.setSize(700,700);

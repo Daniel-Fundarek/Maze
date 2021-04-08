@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Manager {
@@ -7,6 +8,9 @@ public class Manager {
     MazeCreator mazeCreator;
     int[][] maze;
     MyCanvas canvas;
+    JLabel label;
+
+
 
     public Manager() {
         this.player = new Player();
@@ -33,6 +37,7 @@ public class Manager {
                     player.setPositionY(1);
                     player.setPositionX(1);
                     player.setCounter(player.getCounter() + 1);
+                    label.setText("Counter: "+ player.getCounter());
                     System.out.println("Presiel si bludisko"+ player.getCounter());
                     mazeCreator.createNewMaze();
                     maze = mazeCreator.cloneTwoDimArray();
@@ -71,5 +76,9 @@ public class Manager {
 
     public int[][] getMaze() {
         return maze;
+    }
+
+    public void setLabel(JLabel label) {
+        this.label = label;
     }
 }

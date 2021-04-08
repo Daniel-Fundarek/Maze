@@ -17,7 +17,7 @@ public class MyCanvas extends Canvas {
 
     @Override
     public void paint(Graphics g) {
-        drawBoard(g);
+        setColorAndDrawBoard(g);
     }
     private void drawHorizontalLines(int row,int column, Graphics g){
 
@@ -37,7 +37,7 @@ public class MyCanvas extends Canvas {
         g.fillRect(11*column,11*row,20,20);
 
     }
-    private void drawBoard(Graphics g){
+    private void setColorAndDrawBoard(Graphics g){
         maze = manager.getMaze();
         for (int row =0;row< maze.length-1; row++){
             for (int column =0;column< maze[0].length-1; column++) {
@@ -96,16 +96,7 @@ public class MyCanvas extends Canvas {
         }
     }
 
-    private void markViableTiles(int row, int column, int directionX ,int  directionY, Graphics g){
-        if (maze[row + directionY][column+directionX] == 0){
-            g.setColor(Color.CYAN);
-            drawBoard(row + directionY,column+directionX, g);
-            markViableTiles(row+directionY ,column+directionX, directionX, directionY,g);
-        }
-        else{
 
-        }
-    }
 
 
 }
