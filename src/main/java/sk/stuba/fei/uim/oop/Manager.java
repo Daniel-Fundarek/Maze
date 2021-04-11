@@ -75,6 +75,12 @@ public class Manager {
         markAllViableTiles(player.getPositionY(), player.getPositionX());
     }
 
+    public void reset(){
+        player.setCounter(0);
+        restart();
+        canvas.repaint();
+    }
+
     public void setCanvas(MyCanvas canvas) {
         this.canvas = canvas;
     }

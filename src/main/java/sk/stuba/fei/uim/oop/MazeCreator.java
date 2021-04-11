@@ -82,6 +82,7 @@ public class MazeCreator {
         return wall;
 
     }
+
     private ArrayList<ArrayList<Integer>> evaluateTile(int row, int column,int mode){
         ArrayList<ArrayList<Integer>> positionOfWall = create2dArraylist();
         for (int rowOfArray = 0; rowOfArray < positionOfWall.size(); rowOfArray++) {

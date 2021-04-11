@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MyKeyListener implements KeyListener {
-    Manager manager;
+    private Manager manager;
 
     public MyKeyListener(Manager manager) {
         this.manager = manager;
