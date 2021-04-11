@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop;
 import java.awt.*;
 
 public class MyCanvas extends Canvas {
-    Manager manager;
+    private Manager manager;
     private int[][] maze;
     public MyCanvas(Manager manager) {
         this.manager = manager;
@@ -67,6 +67,9 @@ public class MyCanvas extends Canvas {
         }
         else if (maze[row][column] == 9){
             g.setColor(Color.BLUE);
+        }
+        else if (maze[row][column] == 8){
+            g.setColor(Color.YELLOW);
         }
         else{
             g.setColor(Color.WHITE);

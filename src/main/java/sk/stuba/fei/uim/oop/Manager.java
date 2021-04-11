@@ -18,7 +18,10 @@ public class Manager {
         this.maze = mazeCreator.cloneTwoDimArray();
         maze[player.getPositionY()][player.getPositionX()] = 3; // kde je hrac
         markAllViableTiles(player.getPositionY(), player.getPositionX());
-        // paint
+        placePlayerOnBoard();
+
+
+        //paint
 
     }
 
@@ -29,8 +32,8 @@ public class Manager {
                 player.setPositionX(player.getPositionX() + moveX);
                 maze = mazeCreator.cloneTwoDimArray();
                 markAllViableTiles(player.getPositionY(), player.getPositionX());
-                //repaint
 
+                //repaint
                 // skontroluj ci niesom v cieli //
                 if (maze[player.getPositionY() ][player.getPositionX() ] == 9) {
 
@@ -39,12 +42,18 @@ public class Manager {
                     restart();
 
                 }
+                placePlayerOnBoard();
                 canvas.repaint();
 
 
             }
         }
     }
+
+    private void placePlayerOnBoard(){
+        maze[player.getPositionY()][player.getPositionX()]=8;
+    }
+
 
     private void markAllViableTiles(int row, int column){
         markViableTile(row,column,1,0);
@@ -73,6 +82,7 @@ public class Manager {
         mazeCreator.createNewMaze();
         maze = mazeCreator.cloneTwoDimArray();
         markAllViableTiles(player.getPositionY(), player.getPositionX());
+        placePlayerOnBoard();
     }
 
     public void reset(){

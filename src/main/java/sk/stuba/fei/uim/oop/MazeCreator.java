@@ -42,7 +42,7 @@ public class MazeCreator {
         for (int row = 1; row < maze.length;row++){
             for(int column = 1;column < maze[0].length;column++){
                 if(row == 1 && column ==1)
-                    clearWall(row,column);
+                    createWall(row,column);
                 else
                    breakWall(row,column);
             }
@@ -95,7 +95,7 @@ public class MazeCreator {
     }
 
 
-    private void clearWall(int row, int column){
+    private void createWall(int row, int column){
         System.out.println();
         int mode = 1; //hladaj este nepouzite steny , ine cislo by boli steny ktore su uz ulozene
         if (row<= maze.length && column <= maze[0].length && maze[row][column] == 0) {
@@ -115,7 +115,7 @@ public class MazeCreator {
                 }
                 System.out.println(positionOfWall.get(randomWall).get(0)+ "  " + positionOfWall.get(randomWall).get(1));
                 System.out.println(positionOfWall);
-                clearWall(row + 2*positionOfWall.get(randomWall).get(0),column + 2*positionOfWall.get(randomWall).get(1));
+                createWall(row + 2*positionOfWall.get(randomWall).get(0),column + 2*positionOfWall.get(randomWall).get(1));
             }
             else{
 
@@ -131,7 +131,7 @@ public class MazeCreator {
             positionOfWall= evaluateTile(row,column,mode);
             int randomWall = random.nextInt(positionOfWall.size());
             maze[row + positionOfWall.get(randomWall).get(0)][column + positionOfWall.get(randomWall).get(1)] = 5;
-            clearWall(row,column);
+            createWall(row,column);
         }
     }
     private ArrayList<ArrayList<Integer>> create2dArraylist(){
