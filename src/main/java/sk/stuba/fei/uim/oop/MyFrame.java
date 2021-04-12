@@ -24,7 +24,7 @@ public class MyFrame extends JFrame {
         JLabel label = new JLabel("Counter: 0"  );
         JPanel buttonPanel  = new JPanel();
         frame.setLayout(new BorderLayout());
-        buttonPanel.setLayout(new GridLayout(3,3));
+        buttonPanel.setLayout(new GridLayout(6,3));
 
         createButtons(buttonPanel);
 
@@ -72,6 +72,14 @@ public class MyFrame extends JFrame {
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(buttonDown);
         buttonPanel.add(new JLabel(""));
+        buttonPanel.add(new JLabel(""));
+        buttonPanel.add(new JLabel(""));
+        buttonPanel.add(new JLabel(""));
+        buttonPanel.add(new JLabel(""));
+
+
+
+
 
     }
 }

@@ -28,6 +28,7 @@ public class Manager {
     public void keyResponse(int moveY, int moveX){
         if (moveY + player.getPositionY() >= 1 && moveX + player.getPositionX() >= 1) {
             if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 || maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 9) {
+                // upravit pre mys na end sa da kliknut hned
                 player.setPositionY(player.getPositionY() + moveY);
                 player.setPositionX(player.getPositionX() + moveX);
                 maze = mazeCreator.cloneTwoDimArray();
@@ -65,7 +66,7 @@ public class Manager {
 
     private void markViableTile(int row, int column, int directionX ,int  directionY){
         if (maze[row + directionY][column+directionX] == 0){  // kde je cesta
-
+            // upravit pre mys tak aby bolo oznacene aj policko end
             maze[row + directionY][column+directionX] = 2; // kam moze hrac ist
             markViableTile(row+directionY ,column+directionX, directionX, directionY);
         }

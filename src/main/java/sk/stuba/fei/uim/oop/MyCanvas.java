@@ -19,7 +19,11 @@ public class MyCanvas extends Canvas {
     public void paint(Graphics g) {
         changeColorAndDrawBoard(g);
     }
-    protected void drawHorizontalLines(int row,int column, Graphics g){
+
+
+
+
+    private void drawHorizontalLines(int row,int column, Graphics g){
 
         g.fillRect(11*column,11*row+9,20,2);
 
