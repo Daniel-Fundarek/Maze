@@ -66,7 +66,7 @@ public class MyCanvas extends Canvas {
             g.setColor(Color.CYAN);
         }
         else if (maze[row][column] == 9){
-            g.setColor(Color.BLUE);
+            g.setColor(Color.GRAY);
         }
         else if (maze[row][column] == 8){
             g.setColor(Color.YELLOW);

@@ -36,8 +36,9 @@ public class MyFrame extends JFrame {
         frame.add("Center",canvas);
 
         frame.setVisible(true);
-        frame.addKeyListener(new MyKeyListener(manager) );
-        frame.setSize(700,500);
+        canvas.addKeyListener(new MyKeyListener(manager) );
+        frame.pack();
+        frame.setSize(610,400);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
     }
 
