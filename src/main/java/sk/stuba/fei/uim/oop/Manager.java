@@ -91,17 +91,15 @@ public class Manager {
         }
     }
     private void highlightTile(int mousePositionX, int mousePositionY){
+        if (maze[mousePositionY][mousePositionX] == 2) {
+            eraseHighlight();
+            maze[mousePositionY][mousePositionX] = 7; // highlighted
+            placePlayerOnBoard();
+            previousMousePositionY = mousePositionY;
+            previousMousePositionX = mousePositionX;
+            canvas.repaint();
 
-                if (maze[mousePositionY][mousePositionX] == 2) {
-                    eraseHighlight();
-                    maze[mousePositionY][mousePositionX] = 7; // highlighted
-                    placePlayerOnBoard();
-                    previousMousePositionY = mousePositionY;
-                    previousMousePositionX = mousePositionX;
-                    canvas.repaint();
-
-                }
-
+        }
 
     }
 
