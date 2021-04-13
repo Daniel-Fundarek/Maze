@@ -85,7 +85,6 @@ public class Manager {
     public void motionResponse(int mousePositionX, int mousePositionY){
         if (player.getMoveWithMouse() == true){
             if ( previousMousePositionX!= mousePositionX || previousMousePositionY != mousePositionY) {
-                System.out.println(player.getMoveWithMouse());
                 highlightTile(mousePositionX, mousePositionY);
             }
         }

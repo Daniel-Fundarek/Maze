@@ -48,7 +48,7 @@ public class MazeCreator {
                 else
                    breakWall(row,column);
             }
-            printMaze();
+           // printMaze();
         }
 
 
@@ -164,7 +164,7 @@ public class MazeCreator {
         createBorder();
         createMaze();
         simplifyMaze();
-        printMaze();
+       //printMaze();
 
     }
 
