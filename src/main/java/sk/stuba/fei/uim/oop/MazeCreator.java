@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class MazeCreator {
     private Random random = new Random();
     private int[][] maze = new int[30][30];  // only even num
-
+    private  int endX = maze.length-3;
+    private  int endY = maze[0].length-3;
     public MazeCreator() {
         createNewMaze();
     }
@@ -60,9 +61,9 @@ public class MazeCreator {
                 else{
                     maze[row][column] = 0;
                 }
-                if (row == maze.length-3 && column == maze[0].length-3){        // pridanie konca
+                /*if (row == maze.length-3 && column == maze[0].length-3){        // pridanie konca
                     maze[row][column] = 9;
-                }
+                }*/
             }
         }
     }
@@ -168,6 +169,15 @@ public class MazeCreator {
         printMaze();
 
     }
+
+    public int getEndX() {
+        return endX;
+    }
+
+    public int getEndY() {
+        return endY;
+    }
+
     public int[][] getMaze() {
         return maze;
     }

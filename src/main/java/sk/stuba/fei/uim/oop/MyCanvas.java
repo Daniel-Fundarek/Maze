@@ -10,10 +10,7 @@ public class MyCanvas extends Canvas {
 
     }
 
-    @Override
-    public void repaint() {
-        super.repaint();
-    }
+
 
     @Override
     public void paint(Graphics g) {
@@ -63,16 +60,17 @@ public class MyCanvas extends Canvas {
 
     }
     private void changeColor(int row,int column,Graphics g){
-        if (maze[row][column] ==1 ){
+        if (maze[row][column] ==1 ){ // stena
             g.setColor(Color.BLACK);
         }
-        else if(maze[row][column] == 2){
-            g.setColor(Color.CYAN);
-        }
-        else if (maze[row][column] == 9){
+
+        else if (row == manager.getEndY() && column == manager.getEndX()){ // ciel
             g.setColor(Color.GRAY);
         }
-        else if (maze[row][column] == 8){
+        else if(maze[row][column] == 2){ // kam sa mozem pohnut
+            g.setColor(Color.CYAN);
+        }
+        else if (maze[row][column] == 8){ // hrac
             g.setColor(Color.YELLOW);
         }
         else{

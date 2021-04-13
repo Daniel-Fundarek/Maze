@@ -8,14 +8,12 @@ import java.awt.event.ActionListener;
 public class MyFrame extends JFrame {
     private Manager manager;
     private MyCanvas canvas;
-    public MyFrame()  {
-        this.manager = new Manager();
-        this.canvas = new MyCanvas(manager);
-        manager.setCanvas(this.canvas);
+
+
+    public MyFrame(Manager manager, MyCanvas canvas)  {
+        this.manager = manager;
+        this.canvas = canvas;
         createFrame();
-
-
-
     }
 
     private void createFrame() {
@@ -37,6 +35,8 @@ public class MyFrame extends JFrame {
 
         frame.setVisible(true);
         canvas.addKeyListener(new MyKeyListener(manager) );
+        canvas.addMouseListener(new MyMouseAdapter(manager));
+        canvas.addMouseMotionListener(new MyMouseAdapter(manager));
         frame.pack();
         frame.setSize(610,400);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);

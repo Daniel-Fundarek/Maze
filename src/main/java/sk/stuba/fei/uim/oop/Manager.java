@@ -5,11 +5,14 @@ import java.awt.*;
 import java.awt.event.KeyListener;
 
 public class Manager {
-    Player player;
-    MazeCreator mazeCreator;
-    int[][] maze;
-    MyCanvas canvas;
-    JLabel label;
+    private Player player;
+    private MazeCreator mazeCreator;
+    private int[][] maze;
+    private MyCanvas canvas;
+    private JLabel label;
+    private  int endX;
+    private  int endY;
+
 
 
 
@@ -17,18 +20,37 @@ public class Manager {
         this.player = new Player();
         this.mazeCreator = new MazeCreator();
         this.maze = mazeCreator.cloneTwoDimArray();
-        maze[player.getPositionY()][player.getPositionX()] = 3; // kde je hrac
+        endX = mazeCreator.getEndX();
+        endY = mazeCreator.getEndY();
         markAllViableTiles(player.getPositionY(), player.getPositionX());
         placePlayerOnBoard();
+
+        this.canvas = new MyCanvas(this);
+        new MyFrame(this,this.canvas);
 
 
         //paint
 
     }
+    public void mouseResponse(int y,int x){
+        int moveY = 0;
+        int moveX = 0;
+        if (player.getMoveWithMouse() == true) {
+            moveY = y - player.getPositionY();
+            moveX = x - player.getPositionX();
+            player.setMoveWithMouse(false);
+            keyResponse(moveY, moveX);
 
+        }
+        else{
+            if (player.getPositionY() == y && player.getPositionX() == x){
+                player.setMoveWithMouse(true);
+            }
+        }
+    }
     public void keyResponse(int moveY, int moveX){
         if (moveY + player.getPositionY() >= 1 && moveX + player.getPositionX() >= 1) {
-            if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 || maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 9) {
+            if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ) {
                 // upravit pre mys na end sa da kliknut hned
                 player.setPositionY(player.getPositionY() + moveY);
                 player.setPositionX(player.getPositionX() + moveX);
@@ -37,7 +59,7 @@ public class Manager {
 
                 //repaint
                 // skontroluj ci niesom v cieli //
-                if (maze[player.getPositionY() ][player.getPositionX() ] == 9) {
+                if (player.getPositionY() == endY && player.getPositionX() == endX) {
 
 
                     player.setCounter(player.getCounter() + 1);
@@ -93,6 +115,13 @@ public class Manager {
         canvas.repaint();
     }
 
+    public int getEndX() {
+        return endX;
+    }
+
+    public int getEndY() {
+        return endY;
+    }
 
     public void setCanvas(MyCanvas canvas) {
         this.canvas = canvas;

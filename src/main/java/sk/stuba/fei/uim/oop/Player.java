@@ -1,9 +1,10 @@
 package sk.stuba.fei.uim.oop;
 
 public class Player {
-    int counter = 0;
-    int positionX = 1;
-    int positionY = 1;
+    private int counter = 0;
+    private int positionX = 1;
+    private int positionY = 1;
+    private boolean moveWithMouse = false;
 
     public int getPositionX() {
         return positionX;
@@ -27,5 +28,13 @@ public class Player {
 
     public void setCounter(int counter) {
         this.counter = counter;
+    }
+
+    public boolean getMoveWithMouse() {
+        return moveWithMouse;
+    }
+
+    public void setMoveWithMouse(boolean moveWithMouse) {
+        this.moveWithMouse = moveWithMouse;
     }
 }
