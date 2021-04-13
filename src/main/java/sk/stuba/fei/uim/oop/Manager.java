@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.oop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 public class Manager {
     Player player;
@@ -91,6 +92,7 @@ public class Manager {
         restart();
         canvas.repaint();
     }
+
 
     public void setCanvas(MyCanvas canvas) {
         this.canvas = canvas;

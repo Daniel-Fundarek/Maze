@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class MyFrame extends JFrame {
     private Manager manager;
     private MyCanvas canvas;
-    public MyFrame() throws HeadlessException {
+    public MyFrame()  {
         this.manager = new Manager();
         this.canvas = new MyCanvas(manager);
         manager.setCanvas(this.canvas);
