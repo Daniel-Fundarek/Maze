@@ -91,7 +91,7 @@ public class Manager {
         }
     }
     private void highlightTile(int mousePositionX, int mousePositionY){
-           // if (mousePositionX>0 && mousePositionY >0){
+
                 if (maze[mousePositionY][mousePositionX] == 2) {
                     eraseHighlight();
                     maze[mousePositionY][mousePositionX] = 7; // highlighted
@@ -101,7 +101,7 @@ public class Manager {
                     canvas.repaint();
 
                 }
-            //}
+
 
     }
 
