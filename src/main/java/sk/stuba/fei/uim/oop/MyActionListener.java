@@ -23,11 +23,9 @@ public class MyActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (moveY != 0 || moveX != 0){
             manager.keyResponse(moveY,moveX);
-
         }
         else{
             manager.reset();
-
         }
     }
 }

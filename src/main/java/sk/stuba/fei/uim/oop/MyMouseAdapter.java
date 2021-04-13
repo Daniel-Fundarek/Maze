@@ -34,26 +34,18 @@ public class MyMouseAdapter extends MouseAdapter {
             column = column * 2 - 1;
 
         }
-        System.out.println("riadok: " + row + " stlpec: " + column);
+      //  System.out.println("riadok: " + row + " stlpec: " + column);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Click Suradnica X: "+e.getX());
-        System.out.println("Click Suradnica Y: "+e.getY());
         whereAmI(e.getX(),e.getY());
         manager.mouseResponse(row, column);
     }
 
-    /*@Override
-    public void mouseClicked(MouseEvent e) {
-
-    }*/
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println("Pohyb Suradnica X: "+e.getX());
-        System.out.println("Pohyb Suradnica Y: "+e.getY());
         whereAmI(e.getX(),e.getY());
         manager.motionResponse(column,row);
     }

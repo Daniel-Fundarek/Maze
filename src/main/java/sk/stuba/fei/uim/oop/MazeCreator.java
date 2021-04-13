@@ -34,6 +34,7 @@ public class MazeCreator {
             }
             System.out.println();
         }
+        System.out.println();
 
     }
 
@@ -61,9 +62,6 @@ public class MazeCreator {
                 else{
                     maze[row][column] = 0;
                 }
-                /*if (row == maze.length-3 && column == maze[0].length-3){        // pridanie konca
-                    maze[row][column] = 9;
-                }*/
             }
         }
     }
@@ -97,7 +95,7 @@ public class MazeCreator {
 
 
     private void createWall(int row, int column){
-        System.out.println();
+       // System.out.println();
         int mode = 1; //hladaj este nepouzite steny , ine cislo by boli steny ktore su uz ulozene
         if (row<= maze.length && column <= maze[0].length && maze[row][column] == 0) {
             maze[row][column] = 9; // visited
@@ -114,8 +112,8 @@ public class MazeCreator {
                         maze[row + positionOfWall.get(i).get(0)][column + positionOfWall.get(i).get(1)] = 1;
                     }
                 }
-                System.out.println(positionOfWall.get(randomWall).get(0)+ "  " + positionOfWall.get(randomWall).get(1));
-                System.out.println(positionOfWall);
+                //System.out.println(positionOfWall.get(randomWall).get(0)+ "  " + positionOfWall.get(randomWall).get(1));
+                //System.out.println(positionOfWall);
                 createWall(row + 2*positionOfWall.get(randomWall).get(0),column + 2*positionOfWall.get(randomWall).get(1));
             }
             else{

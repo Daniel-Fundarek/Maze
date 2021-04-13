@@ -56,7 +56,7 @@ public class Manager {
     public void response(int moveY, int moveX){
         if (moveY + player.getPositionY() >= 1 && moveX + player.getPositionX() >= 1) {
             eraseHighlight();
-            if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ){//||maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 7 ) {
+            if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ){
                 // upravit pre mys na end sa da kliknut hned
                 player.setPositionY(player.getPositionY() + moveY);
                 player.setPositionX(player.getPositionX() + moveX);
@@ -131,7 +131,7 @@ public class Manager {
         player.setPositionY(1);
         player.setPositionX(1);
         label.setText("Counter: "+ player.getCounter());
-        System.out.println("Presiel si bludisko"+ player.getCounter());
+       // System.out.println("Presiel si bludisko"+ player.getCounter());
         mazeCreator.createNewMaze();
         maze = mazeCreator.cloneTwoDimArray();
         markAllViableTiles(player.getPositionY(), player.getPositionX());
