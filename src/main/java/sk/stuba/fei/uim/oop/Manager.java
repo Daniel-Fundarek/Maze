@@ -47,9 +47,6 @@ public class Manager {
         }
         else if (player.getPositionY() == y && player.getPositionX() == x){
             player.setMoveWithMouse(true);
-           /* if(maze[previousMousePositionY][previousMousePositionX] == 7){
-                maze[previousMousePositionY][previousMousePositionX] = 2;
-            }*/
         }
     }
     public void keyResponse(int moveY, int moveX){
@@ -58,33 +55,31 @@ public class Manager {
     }
     public void response(int moveY, int moveX){
         if (moveY + player.getPositionY() >= 1 && moveX + player.getPositionX() >= 1) {
-           /* if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 7 ){
-                maze[player.getPositionY() + moveY][player.getPositionX() + moveX] = 2;
-            }*/
-            if(maze[previousMousePositionY][previousMousePositionX] == 7){
-                maze[previousMousePositionY][previousMousePositionX] = 2;
-            }
+            eraseHighlight();
             if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ){//||maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 7 ) {
                 // upravit pre mys na end sa da kliknut hned
                 player.setPositionY(player.getPositionY() + moveY);
                 player.setPositionX(player.getPositionX() + moveX);
                 maze = mazeCreator.cloneTwoDimArray();
                 markAllViableTiles(player.getPositionY(), player.getPositionX());
-
-                //repaint
-                // skontroluj ci niesom v cieli //
-                if (player.getPositionY() == endY && player.getPositionX() == endX) {
-
-
-                    player.setCounter(player.getCounter() + 1);
-                    restart();
-
-                }
+                checkForEnd();
                 placePlayerOnBoard();
 
-
-
             }
+        }
+    }
+    private void checkForEnd(){
+        if (player.getPositionY() == endY && player.getPositionX() == endX) {
+
+
+            player.setCounter(player.getCounter() + 1);
+            restart();
+
+        }
+    }
+    private void eraseHighlight(){
+        if(maze[previousMousePositionY][previousMousePositionX] == 7){
+            maze[previousMousePositionY][previousMousePositionX] = 2;
         }
     }
     public void motionResponse(int mousePositionX, int mousePositionY){
@@ -99,7 +94,7 @@ public class Manager {
             if (mousePositionX>0 && mousePositionY >0){
 
                 if (maze[mousePositionY][mousePositionX] == 2) {
-                    maze[previousMousePositionY][previousMousePositionX] = 2;
+                    eraseHighlight();
                     maze[mousePositionY][mousePositionX] = 7; // highlighted
                     placePlayerOnBoard();
                     previousMousePositionY = mousePositionY;
