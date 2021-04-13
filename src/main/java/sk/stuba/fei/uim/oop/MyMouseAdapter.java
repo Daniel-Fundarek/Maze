@@ -54,5 +54,7 @@ public class MyMouseAdapter extends MouseAdapter {
     public void mouseMoved(MouseEvent e) {
         System.out.println("Pohyb Suradnica X: "+e.getX());
         System.out.println("Pohyb Suradnica Y: "+e.getY());
+        whereAmI(e.getX(),e.getY());
+        manager.motionResponse(column,row);
     }
 }

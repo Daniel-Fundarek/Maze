@@ -10,6 +10,8 @@ public class Manager {
     private int[][] maze;
     private MyCanvas canvas;
     private JLabel label;
+    private int previousMousePositionX =1;
+    private int previousMousePositionY =1;
     private  int endX;
     private  int endY;
 
@@ -39,18 +41,30 @@ public class Manager {
             moveY = y - player.getPositionY();
             moveX = x - player.getPositionX();
             player.setMoveWithMouse(false);
-            keyResponse(moveY, moveX);
+            response(moveY, moveX);
+            canvas.repaint();
 
         }
-        else{
-            if (player.getPositionY() == y && player.getPositionX() == x){
-                player.setMoveWithMouse(true);
-            }
+        else if (player.getPositionY() == y && player.getPositionX() == x){
+            player.setMoveWithMouse(true);
+           /* if(maze[previousMousePositionY][previousMousePositionX] == 7){
+                maze[previousMousePositionY][previousMousePositionX] = 2;
+            }*/
         }
     }
     public void keyResponse(int moveY, int moveX){
+        response(moveY, moveX);
+        canvas.repaint();
+    }
+    public void response(int moveY, int moveX){
         if (moveY + player.getPositionY() >= 1 && moveX + player.getPositionX() >= 1) {
-            if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ) {
+           /* if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 7 ){
+                maze[player.getPositionY() + moveY][player.getPositionX() + moveX] = 2;
+            }*/
+            if(maze[previousMousePositionY][previousMousePositionX] == 7){
+                maze[previousMousePositionY][previousMousePositionX] = 2;
+            }
+            if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ){//||maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 7 ) {
                 // upravit pre mys na end sa da kliknut hned
                 player.setPositionY(player.getPositionY() + moveY);
                 player.setPositionX(player.getPositionX() + moveX);
@@ -67,11 +81,34 @@ public class Manager {
 
                 }
                 placePlayerOnBoard();
-                canvas.repaint();
+
 
 
             }
         }
+    }
+    public void motionResponse(int mousePositionX, int mousePositionY){
+        if (player.getMoveWithMouse() == true){
+            if ( previousMousePositionX!= mousePositionX || previousMousePositionY != mousePositionY) {
+                System.out.println(player.getMoveWithMouse());
+                highlightTile(mousePositionX, mousePositionY);
+            }
+        }
+    }
+    private void highlightTile(int mousePositionX, int mousePositionY){
+            if (mousePositionX>0 && mousePositionY >0){
+
+                if (maze[mousePositionY][mousePositionX] == 2) {
+                    maze[previousMousePositionY][previousMousePositionX] = 2;
+                    maze[mousePositionY][mousePositionX] = 7; // highlighted
+                    placePlayerOnBoard();
+                    previousMousePositionY = mousePositionY;
+                    previousMousePositionX = mousePositionX;
+                    canvas.repaint();
+
+                }
+            }
+
     }
 
     private void placePlayerOnBoard(){
@@ -134,5 +171,6 @@ public class Manager {
     public void setLabel(JLabel label) {
         this.label = label;
     }
+
 
 }

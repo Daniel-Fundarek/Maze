@@ -73,6 +73,9 @@ public class MyCanvas extends Canvas {
         else if (maze[row][column] == 8){ // hrac
             g.setColor(Color.YELLOW);
         }
+        else if(maze[row][column] == 7) { // hrac
+            g.setColor(Color.GREEN);
+        }
         else{
             g.setColor(Color.WHITE);
         }
@@ -101,6 +104,7 @@ public class MyCanvas extends Canvas {
            // System.out.println("Vertikalne:row: "+ row + "column: " +column);
         }
     }
+
 
 
 
