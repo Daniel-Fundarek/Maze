@@ -9,7 +9,7 @@ public class Manager {
     private MazeCreator mazeCreator;
     private int[][] maze;
     private MyCanvas canvas;
-    private JLabel label;
+    private JLabel label = new JLabel("Counter: 0");
     private int previousMousePositionX =1;
     private int previousMousePositionY =1;
     private  int endX;
@@ -28,7 +28,7 @@ public class Manager {
         placePlayerOnBoard();
 
         this.canvas = new MyCanvas(this);
-        new MyFrame(this,this.canvas);
+        new MyFrame(this,this.canvas, label);
 
 
         //paint
@@ -153,9 +153,6 @@ public class Manager {
         return endY;
     }
 
-    public void setCanvas(MyCanvas canvas) {
-        this.canvas = canvas;
-    }
 
     public int[][] getMaze() {
         return maze;

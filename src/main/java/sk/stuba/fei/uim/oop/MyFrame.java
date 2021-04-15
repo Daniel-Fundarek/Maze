@@ -8,18 +8,20 @@ import java.awt.event.ActionListener;
 public class MyFrame extends JFrame {
     private Manager manager;
     private MyCanvas canvas;
+    JLabel label;
 
 
-    public MyFrame(Manager manager, MyCanvas canvas)  {
+    public MyFrame(Manager manager, MyCanvas canvas, JLabel label)  {
         this.manager = manager;
         this.canvas = canvas;
+        this.label = label;
         createFrame();
     }
 
     private void createFrame() {
         JFrame frame = new JFrame("Maze");
         JPanel panel = new JPanel();
-        JLabel label = new JLabel("Counter: 0"  );
+        // = new JLabel("Counter: 0"  );
         JPanel buttonPanel  = new JPanel();
         frame.setLayout(new BorderLayout());
         buttonPanel.setLayout(new GridLayout(6,3));
@@ -28,7 +30,7 @@ public class MyFrame extends JFrame {
 
         frame.add(buttonPanel, BorderLayout.EAST);
         panel.add(label);
-        manager.setLabel(label);
+        //manager.setLabel(label);
         frame.add("West",panel);
 
         frame.add("Center",canvas);
@@ -65,12 +67,14 @@ public class MyFrame extends JFrame {
 
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(buttonUp);
-        buttonPanel.add(new JLabel(""));
-        buttonPanel.add(buttonLeft);
         buttonPanel.add(buttonReset);
+
+        buttonPanel.add(buttonLeft);
+        buttonPanel.add(buttonDown);
+
         buttonPanel.add(buttonRight);
         buttonPanel.add(new JLabel(""));
-        buttonPanel.add(buttonDown);
+        buttonPanel.add(new JLabel(""));
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(new JLabel(""));
