@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop;
 
+
 import java.awt.*;
 
 public class MyCanvas extends Canvas {
@@ -40,8 +41,8 @@ public class MyCanvas extends Canvas {
     }
     private void changeColorAndDrawBoard(Graphics g){
         maze = manager.getMaze();
-        for (int row =0;row< maze.length-1; row++){
-            for (int column =0;column< maze[0].length-1; column++) {
+        for (int row =0;row< maze.length-2; row++){
+            for (int column =0;column< maze[0].length-2; column++) {
                 changeColor(row,column,g);
                 drawBoard(row,column,g);
 

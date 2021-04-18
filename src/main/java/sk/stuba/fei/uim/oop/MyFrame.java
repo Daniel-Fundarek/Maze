@@ -2,8 +2,7 @@ package sk.stuba.fei.uim.oop;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class MyFrame extends JFrame {
     private Manager manager;
@@ -25,7 +24,7 @@ public class MyFrame extends JFrame {
         JPanel buttonPanel  = new JPanel();
         frame.setLayout(new BorderLayout());
         buttonPanel.setLayout(new GridLayout(6,3));
-
+        canvas.setFocusable(true);
         createButtons(buttonPanel);
 
         frame.add(buttonPanel, BorderLayout.EAST);
