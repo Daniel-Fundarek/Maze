@@ -10,8 +10,8 @@ public class Manager {
     private int[][] maze;
     private MyCanvas canvas;
     private JLabel label = new JLabel("Counter: 0");
-    private int previousMousePositionX =1;
-    private int previousMousePositionY =1;
+    private int previousMousePositionX = 1;
+    private int previousMousePositionY = 1;
     private  int endX;
     private  int endY;
 
@@ -80,6 +80,8 @@ public class Manager {
     private void eraseHighlight(){
         if(maze[previousMousePositionY][previousMousePositionX] == 7){
             maze[previousMousePositionY][previousMousePositionX] = 2;
+            previousMousePositionY = 1;
+            previousMousePositionX = 1;
         }
     }
     public void motionResponse(int mousePositionX, int mousePositionY){
