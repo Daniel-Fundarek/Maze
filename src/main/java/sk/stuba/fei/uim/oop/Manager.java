@@ -1,8 +1,6 @@
 package sk.stuba.fei.uim.oop;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyListener;
 
 public class Manager {
     private Player player;
@@ -55,7 +53,7 @@ public class Manager {
     }
     public void response(int moveY, int moveX){
         if (moveY + player.getPositionY() >= 1 && moveX + player.getPositionX() >= 1) {
-            eraseHighlight();
+            eraseHighlightAndResetPreviouPos();
             if (maze[player.getPositionY() + moveY][player.getPositionX() + moveX] == 2 ){
                 // upravit pre mys na end sa da kliknut hned
                 player.setPositionY(player.getPositionY() + moveY);
@@ -77,7 +75,7 @@ public class Manager {
 
         }
     }
-    private void eraseHighlight(){
+    private void eraseHighlightAndResetPreviouPos(){
         if(maze[previousMousePositionY][previousMousePositionX] == 7){
             maze[previousMousePositionY][previousMousePositionX] = 2;
             previousMousePositionY = 1;
@@ -95,7 +93,7 @@ public class Manager {
     }
     private void highlightTile(int mousePositionX, int mousePositionY){
         if (maze[mousePositionY][mousePositionX] == 2) {
-            eraseHighlight();
+            eraseHighlightAndResetPreviouPos();
             maze[mousePositionY][mousePositionX] = 7; // highlighted
             placePlayerOnBoard();
             previousMousePositionY = mousePositionY;
