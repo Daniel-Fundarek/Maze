@@ -21,12 +21,14 @@ public class MyFrame extends JFrame {
         JFrame frame = new JFrame("Maze");
         JPanel panel = new JPanel();
         // = new JLabel("Counter: 0"  );
-        JPanel buttonPanel  = new JPanel();
+        MyButtonPanel buttonPanel = new MyButtonPanel(manager);
+       // JPanel buttonPanel  = new JPanel();
         frame.setLayout(new BorderLayout());
-        buttonPanel.setLayout(new GridLayout(6,3));
+       // buttonPanel.setLayout(new GridLayout(6,3));
         canvas.setFocusable(true);
-        createButtons(buttonPanel);
+       // createButtons(buttonPanel);
 
+       // frame.add(buttonPanel, BorderLayout.EAST);
         frame.add(buttonPanel, BorderLayout.EAST);
         panel.add(label);
         //manager.setLabel(label);
@@ -54,7 +56,7 @@ public class MyFrame extends JFrame {
         buttonDown.addActionListener(new MyActionListener(manager,0,2));
         buttonLeft.addActionListener(new MyActionListener(manager,-2,0));
         buttonRight.addActionListener(new MyActionListener(manager,2,0));
-        buttonReset.addActionListener(new MyActionListener(manager));
+        buttonReset.addActionListener(new MyResetListener(manager));
 
 
         buttonUp.setFocusable(false);
@@ -79,10 +81,6 @@ public class MyFrame extends JFrame {
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(new JLabel(""));
-
-
-
-
 
     }
 }
