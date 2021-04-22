@@ -27,7 +27,7 @@ public class MazeCreator {
             }
         }
     }
-    private void printMaze(){
+    private void printMaze(){ // for debuging
         System.out.println();
         for (int row =0;row< maze.length; row++){
             for (int column =0;column< maze[0].length; column++) {
