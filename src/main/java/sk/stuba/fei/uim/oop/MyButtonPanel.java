@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyButtonPanel extends JPanel {
-    Manager manager;
+    private Manager manager;
 
     public MyButtonPanel( Manager manager) {
         this.manager = manager;

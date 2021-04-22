@@ -7,7 +7,7 @@ import java.awt.*;
 public class MyFrame extends JFrame {
     private Manager manager;
     private MyCanvas canvas;
-    JLabel label;
+    private JLabel label;
 
 
     public MyFrame(Manager manager, MyCanvas canvas, JLabel label)  {

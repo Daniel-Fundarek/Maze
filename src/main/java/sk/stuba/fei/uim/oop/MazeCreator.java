@@ -7,6 +7,7 @@ public class MazeCreator {
     private int[][] maze = new int[30][30];  // only even num
     private  int endX = maze.length-3;
     private  int endY = maze[0].length-3;
+
     public MazeCreator() {
         createNewMaze();
     }

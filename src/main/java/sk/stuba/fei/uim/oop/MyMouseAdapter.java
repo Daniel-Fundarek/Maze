@@ -7,6 +7,7 @@ public class MyMouseAdapter extends MouseAdapter {
     private Manager manager;
     private int row = 0;
     private int column = 0;
+
     public MyMouseAdapter(Manager manager) {
         this.manager = manager;
     }
