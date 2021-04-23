@@ -12,7 +12,7 @@ public class MyMouseAdapter extends MouseAdapter {
         this.manager = manager;
     }
 
-    private void whereAmI(int x, int y){
+    private void convertPixelsToIndeces(int x, int y){
          row = 0;
          column = 0;
         if (x <9 || y <9 || y>317 || x > 317){
@@ -40,14 +40,14 @@ public class MyMouseAdapter extends MouseAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        whereAmI(e.getX(),e.getY());
+        convertPixelsToIndeces(e.getX(),e.getY());
         manager.mouseResponse(row, column);
     }
 
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        whereAmI(e.getX(),e.getY());
+        convertPixelsToIndeces(e.getX(),e.getY());
         manager.motionResponse(column,row);
     }
 }
